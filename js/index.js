@@ -4,21 +4,23 @@
 // console.log(grandTotal);
 
 function updateSubtotal(product) {
-  let sum = 0;
-  let arr = [];
-  let grandTotal = document.querySelector('#total-value span');
-  for (let i = 0; i < product.length; i++) {
-    let price = product[i].querySelector('.price span').innerHTML;
-    let quantity = product[i].querySelector('.quantity input').value;
-    product[i].querySelector('.subtotal span').innerHTML = price * quantity;
-    let subTotal = Number(product[i].querySelector('.subtotal span').innerHTML);
-    grandTotal.innerHTML += subTotal;
-    arr.push(subTotal);
-  }
-  for (let j = 0; j < arr.length; j++) {
-    sum += arr[j];
-  }
-  grandTotal.innerHTML = sum;
+  // let sum = 0;
+  // let arr = [];
+  // let grandTotal = document.querySelector('#total-value span');
+  // for (let i = 0; i < product.length; i++) {
+
+  //   grandTotal.innerHTML += subTotal;
+  //   arr.push(subTotal);
+  // }
+  // for (let j = 0; j < arr.length; j++) {
+  //   sum += arr[j];
+  // }
+  // grandTotal.innerHTML = sum;
+  let price = product.querySelector('.price span').innerHTML;
+  let quantity = product.querySelector('.quantity input').value;
+  product.querySelector('.subtotal span').innerHTML = price * quantity;
+  let subTotal = Number(product.querySelector('.subtotal span').innerHTML);
+  return subTotal;
 }
 
 function calculateAll() {
@@ -29,9 +31,14 @@ function calculateAll() {
   // end of test
 
   // ITERATION 2
-
+  let total = 0;
   let products = document.getElementsByClassName('product');
-  updateSubtotal(products);
+  for (let i = 0; i < products.length; i++) {
+    total += updateSubtotal(products[i]);
+  }
+  console.log(total);
+  let grandTotal = document.querySelector('#total-value span');
+  grandTotal.innerHTML = total;
 
   // ITERATION 3
 }
