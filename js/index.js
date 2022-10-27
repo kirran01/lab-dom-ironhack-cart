@@ -32,11 +32,10 @@ function calculateAll() {
 
 function removeProduct(event) {
   const target = event.currentTarget;
-  console.log(target.parentNode.parentNode.parentNode, 'parentnode');
-  console.log(target, 'target');
   let table = target.parentNode.parentNode.parentNode;
   let row = target.parentNode.parentNode;
   table.removeChild(row);
+  calculateAll();
 }
 
 // ITERATION 5
