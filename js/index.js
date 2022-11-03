@@ -40,11 +40,27 @@ function removeProduct(event) {
 
 // ITERATION 5
 
-function createProduct() {
-  //... your code goes here
+function createProduct(e) {
+  let productElement = document.querySelector('.product');
+  let createNewProduct = productElement.cloneNode(true);
+  let newProductName = document.querySelector(
+    '.create-product input[type="text"]'
+  ).value;
+  let newProductPrice = document.querySelector(
+    '.create-product input[type="number"]'
+  ).value;
+
+  createNewProduct.querySelector('.name span').textContent = newProductName;
+  createNewProduct.querySelector('.price span').textContent = newProductPrice;
+  document.querySelector('tbody').appendChild(createNewProduct);
+  createNewProduct
+    .querySelector('.btn-remove')
+    .addEventListener('click', removeProduct);
 }
 
 window.addEventListener('load', () => {
+  const createProductButton = document.getElementById('create');
+  createProductButton.addEventListener('click', createProduct);
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
   let removeButtons = document.getElementsByClassName('btn btn-remove');
